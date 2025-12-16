@@ -1,31 +1,21 @@
-const Home = () => {
-    const handleClick = () => {
-        console.log("Hello Ahad");
-    }
-    const handleClickTarget = (e) => {
-        console.log("Hello Ahad", e);
-    }
+import { useState } from "react";
 
-    const handleClickName = (name) => {
-        console.log("Name: Hello " + name);
-    }
- 
-    const handleClickNameTarget = (name,e) => {
-        console.log("Name: Hello " + name, e);
-    }
+const Home = () => {
+
+     const [name, setName] = useState("Ahad");
+     const [age, setAge] = useState(21);
+
+     const handleClick = () => {
+            setName("Ahad Danish");
+            setAge(22);
+        }
 
     return ( 
         <div className="Home">
             <h2>HomePage</h2>
 
-            <button onClick={handleClick()}>Click Me</button> ### Will render automatically on load <br/>
-            <button onClick={handleClick}>Click Me</button> ### Correct Way: will render on click <br/>
-            <button onClick={handleClickTarget}>Click Me</button> ### Correct Way: will render on click with event properties e <br/>
-            <button onClick={handleClickName("Ahad")}>Click Me</button> ### Will render automatically on load <br/>
-            <button onClick={() => handleClickName("Ahad")}>Click Me</button> ### Correct Way: will render on click <br/>
-            <button onClick={(e) => handleClickNameTarget("Ahad", e)}>Click Me</button> ### Correct Way: will render on click with event properties e <br/>
-
-            ### Note: Auto execution function on load with console two times due to StrictMode used in index.js
+            <p>{name} is {age} years old.</p>
+            <button onClick={handleClick}>Update Info</button>
         </div> 
     );
 }
