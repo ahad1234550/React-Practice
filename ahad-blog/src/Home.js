@@ -4,24 +4,37 @@ import BlogList from "./BlogList";
 const Home = () => {
 
     const [blogs, setBlogs] = useState(null);
+    const [pending, setPending] = useState(true);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch("http://localhost:8000/blogs")
-        .then(res =>{
-            return res.json();
-        })
-        .then(data =>{
-            setBlogs(data);
-        });
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setBlogs(data);
+                setPending(false);
+            });
     });
+
+    // use this as it will fetch the data after 1 second so that you can see loading...
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         fetch("http://localhost:8000/blogs")
+    //             .then(res => {
+    //                 return res.json();
+    //             })
+    //             .then(data => {
+    //                 setBlogs(data);
+    //                 setPending(false);
+    //             });
+    //     }, 1000);
+    // });
 
     return (
         <div className="Home">
-            {/* This will not work because useEffect and fetch takes some times so in start blogs is null so it will give error to show the blogs
-            <BlogList blogs = {blogs} title = "All Blogs" />  */}
-
-            {/* Here I used blogs && ..., next part of && works only if blogs will be there, so after the useEffect is done and blogs will have some value it will run */}
-            { blogs && <BlogList blogs = {blogs} title = "All Blogs" /> }
+            {pending && <div>loading...</div>}
+            {blogs && <BlogList blogs={blogs} title="All Blogs" />}
         </div>
     );
 }
