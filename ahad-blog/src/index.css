@@ -22,7 +22,7 @@
 }
 .navbar a {
   margin-left: 16px;
-  text-decoration: none; 
+  text-decoration: none;
   padding: 6px;
 }
 .navbar a:hover {
@@ -51,3 +51,14 @@
 .blog-preview a{
   text-decoration: none;
 }
+
+/* blog details page */
+.blog-details h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 10px;
+}
+.blog-details div {
+  margin: 20px 0;
+}
+

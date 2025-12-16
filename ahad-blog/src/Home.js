@@ -3,7 +3,8 @@ import useFetch from "./useFetch";
 
 const Home = () => {
 
-    const { data: blogs, pending, error } = useFetch("http://localhost:8000/blogs")
+    const dbApi = process.env.REACT_APP_DB_JSON_API_URL;
+    const { data: blogs, pending, error } = useFetch(dbApi);
 
     return (
         <div className="Home">
