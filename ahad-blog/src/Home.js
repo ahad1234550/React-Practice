@@ -17,6 +17,10 @@ const Home = () => {
 
     return (
         <div className="Home">
+            {/* This will not work because useEffect and fetch takes some times so in start blogs is null so it will give error to show the blogs
+            <BlogList blogs = {blogs} title = "All Blogs" />  */}
+
+            {/* Here I used blogs && ..., next part of && works only if blogs will be there, so after the useEffect is done and blogs will have some value it will run */}
             { blogs && <BlogList blogs = {blogs} title = "All Blogs" /> }
         </div>
     );
