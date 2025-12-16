@@ -1,4 +1,4 @@
-created a database using json file in data/db.json
+create a database using json file in data/  as db.json
 
 run npx json-server --watch data/db.json --port 8000 to create an endpoint api for this json file
 
