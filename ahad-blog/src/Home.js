@@ -2,29 +2,22 @@ import { useState } from "react";
 
 const Home = () => {
 
-     const [name, setName] = useState("Ahad");
-     const [age, setAge] = useState(21);
-
-     const handleClick = () => {
-            setName("Ahad Danish");
-            setAge(22);
-        }
-
-    const [count, setCounter] = useState(0);
-    const Counter = () => {
-        setCounter(count+1);
-    }
-    return ( 
+    const [blogs, setBlogs] = useState([
+        { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
+        { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
+        { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
+    ])
+    return (
         <div className="Home">
-            <h2>HomePage</h2>
+            {blogs.map(blog => (
+                <div className="blog-preview" key={blog.id} >
+                    <h2>{blog.title}</h2>
+                    <p>Written by {blog.author}</p>
+                </div>
+            ))}
+        </div>
 
-            <p>{name} is {age} years old.</p>
-            <button onClick={handleClick}>Update Info</button>
-            <br />
-            <button onClick={Counter}>Count: {count}</button>
-        </div> 
-        
     );
 }
- 
+
 export default Home;
