@@ -24,8 +24,8 @@ const useFetch = (url) => {
                 setPending(false);
                 setError(err.message);
             });
-    },[url]);
-    return {data, pending, error};
+    }, [url]);
+    return { data, pending, error };
 }
 
 export default useFetch;
