@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
 
@@ -6,6 +7,7 @@ const Create = () => {
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('Ahad');
     const [pending, setPending] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,6 +25,11 @@ const Create = () => {
         }).then(() => {
             console.log("Blog Added");
             setPending(false);
+
+            // navigate(-1) // for going to previous page
+            // navigate(1) // for going to forward page but sometime it don't make sense as there is no forward page always
+
+            navigate('/'); //It will take to route "/" which is home page
         })
     }
 

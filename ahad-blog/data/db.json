@@ -23,6 +23,12 @@
       "title": "Fahad",
       "body": "He is an iron man",
       "author": "Ahad"
+    },
+    {
+      "id": "20b2",
+      "title": "Hello Ninja",
+      "body": "installHook.js:1 An error occurred in the <Create> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.",
+      "author": "Ahad"
     }
   ]
 }
