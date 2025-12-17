@@ -5,13 +5,25 @@ const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('Ahad');
+    const [pending, setPending] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        setPending(true);
+
         const blog = { title, body, author };
 
-        console.log(blog);
+        const dbApi = process.env.REACT_APP_DB_JSON_API_URL;
+
+        fetch(dbApi,{
+            method : 'POST',
+            headers : { "Content-Type" : "application/json" },
+            body : JSON.stringify(blog)
+        }).then(() => {
+            console.log("Blog Added");
+            setPending(false);
+        })
     }
 
     return (
@@ -29,7 +41,8 @@ const Create = () => {
                     <option value="Ahad">Ahad</option>
                     <option value="Fahad">Fahad</option>
                 </select>
-                <button>Add Blog</button>
+                {!pending && <button>Add Blog</button>}
+                {pending && <button disabled>Adding Blog...</button>}
             </form>
         </div>
     );
